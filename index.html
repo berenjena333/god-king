@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,7 +8,10 @@
   <title>God-King | Minecraft</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -17,49 +20,77 @@
       color: white;
     }
 
+    /* ENCABEZADO */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 8%;
-      background: #130d20;
-      border-bottom: 1px solid #382052;
+      background: linear-gradient(90deg, #130d20, #171027, #101526);
+      border-bottom: 1px solid #493263;
       flex-wrap: wrap;
       gap: 15px;
     }
 
     .logo {
-      font-size: 25px;
+      font-size: 27px;
       font-weight: 900;
+      letter-spacing: 3px;
+      color: #ffffff;
+      text-shadow: 0 0 14px rgba(168, 85, 247, 0.35);
     }
 
-    .logo span, h1 span { color: #b56aff; }
+    .logo span {
+      color: #c084fc;
+      text-shadow: 0 0 12px rgba(192, 132, 252, 0.5);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
 
     nav a {
       color: #ddd1ec;
       text-decoration: none;
-      margin-left: 18px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: color 0.2s;
     }
 
-    nav a:hover { color: #c084fc; }
+    nav a:hover {
+      color: #67e8f9;
+    }
 
+    /* INICIO */
     .hero {
       text-align: center;
       padding: 100px 20px;
-      background: radial-gradient(
-        ellipse at top, #48206c, #191027 55%, #0c0913
-      );
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(0, 183, 255, 0.13), transparent 40%),
+        radial-gradient(ellipse at 80% 15%, rgba(168, 85, 247, 0.22), transparent 45%),
+        linear-gradient(145deg, #191027, #111323 65%, #0c0913);
+      border-bottom: 1px solid #302344;
     }
 
     .tag {
-      color: #d8b4fe;
+      color: #67e8f9;
       letter-spacing: 3px;
       font-size: 12px;
+      font-weight: bold;
     }
 
-    h1 { font-size: clamp(45px, 8vw, 85px); }
+    h1 {
+      font-size: clamp(45px, 8vw, 85px);
+    }
 
-    .hero p, .sub {
+    h1 span {
+      color: #b56aff;
+    }
+
+    .hero p,
+    .sub {
       color: #c7bad5;
       line-height: 1.8;
     }
@@ -69,52 +100,93 @@
       margin: 12px 5px;
       padding: 14px 24px;
       border-radius: 8px;
-      background: #a855f7;
+      background: linear-gradient(110deg, #9333ea, #7c3aed);
       color: white;
       text-decoration: none;
       font-weight: bold;
       border: 1px solid #c084fc;
       cursor: pointer;
+      transition: transform 0.2s, filter 0.2s;
     }
 
-    .btn.secondary { background: transparent; }
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.15);
+    }
 
+    .btn.secondary {
+      background: rgba(20, 25, 45, 0.6);
+      border-color: #67e8f9;
+    }
+
+    /* SECCIONES */
     section {
-      padding: 60px 8%;
+      padding: 65px 8%;
       text-align: center;
     }
 
-    h2 { font-size: 32px; }
+    h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
 
-    /* RANGOS: 3 POR FILA */
+    #rangos {
+      background:
+        radial-gradient(ellipse at top left, rgba(168, 85, 247, 0.07), transparent 45%),
+        #0e0b16;
+    }
+
+    /* TARJETAS DE RANGOS */
     .cards {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 18px;
       margin-top: 35px;
     }
 
     .card {
-      background: #171120;
-      border: 1px solid #38234c;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(145deg, #191423, #12111c);
+      border: 1px solid #382b4c;
       border-radius: 14px;
       padding: 25px 18px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 15%;
+      width: 70%;
+      height: 2px;
+      background: var(--color);
+      opacity: 0.8;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color);
     }
 
     .symbol {
-      font-size: 30px;
+      font-size: 32px;
       margin-bottom: 10px;
+      color: var(--color);
+      text-shadow: 0 0 14px color-mix(in srgb, var(--color), transparent 55%);
     }
 
     .card h3 {
       font-size: 20px;
-      color: #d8b4fe;
+      color: var(--color);
       overflow-wrap: anywhere;
     }
 
     .price {
-      font-size: 25px;
+      font-size: 24px;
       font-weight: bold;
+      color: #ffffff;
     }
 
     .card p {
@@ -126,52 +198,110 @@
       width: 100%;
       margin: 12px 0 0;
       padding: 12px 5px;
+      font-size: 13px;
+      background: rgba(124, 58, 237, 0.13);
+      border-color: var(--color);
     }
 
-    .titan h3, .alpha h3 { color: #dddde9; }
-    .kaiju h3 { color: #ff7777; }
-    .falseking h3, .king h3, .monsters h3 { color: #f2d17a; }
-    .space h3 { color: #8ddcff; }
-    .destroyer h3 { color: #e8b85a; }
-    .god h3 { color: #e5caff; }
+    /* COLOR DE CADA RANGO */
+    .titan     { --color: #d1d5db; }
+    .alpha     { --color: #a3e635; }
+    .kaiju     { --color: #fb7185; }
+    .falseking { --color: #fbbf24; }
+    .king      { --color: #c084fc; }
+    .space     { --color: #67e8f9; }
+    .monsters  { --color: #facc15; }
+    .destroyer { --color: #f59e0b; }
+    .god       { --color: #e879f9; }
 
     .notice {
       max-width: 650px;
-      margin: 25px auto 0;
+      margin: 28px auto 0;
+      padding: 15px;
       color: #b9abc9;
       font-size: 13px;
       line-height: 1.7;
+      background: #15101f;
+      border: 1px solid #302344;
+      border-radius: 10px;
     }
 
-    #servidor { background: #100b18; }
+    /* SERVIDOR */
+    #servidor {
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(34, 211, 238, 0.10), transparent 60%),
+        linear-gradient(180deg, #111323, #100b18);
+      border-top: 1px solid #263449;
+    }
 
     #ip {
       display: inline-block;
       background: #171120;
-      border: 1px solid #38234c;
+      border: 1px solid #67e8f9;
       border-radius: 8px;
       padding: 14px 20px;
+      color: #a5f3fc;
       overflow-wrap: anywhere;
     }
 
+    #mensaje {
+      color: #86efac;
+      min-height: 24px;
+    }
+
+    /* PIE DE PÁGINA */
     footer {
       text-align: center;
       padding: 30px;
+      background: #0a0810;
       border-top: 1px solid #382052;
       color: #a99bb8;
       font-size: 13px;
     }
 
+    footer span {
+      color: #c084fc;
+    }
+
+    /* ADAPTACIÓN A PANTALLAS */
     @media (max-width: 700px) {
-      .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      header { justify-content: center; }
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      header {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
     }
 
     @media (max-width: 450px) {
-      .cards { grid-template-columns: 1fr; }
-      section { padding: 45px 6%; }
-      .hero { padding: 70px 18px; }
-      nav a { margin: 0 7px; font-size: 14px; }
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 45px 6%;
+      }
+
+      .hero {
+        padding: 70px 18px;
+      }
+
+      nav {
+        gap: 14px;
+      }
+
+      nav a {
+        font-size: 13px;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
@@ -179,6 +309,7 @@
 <body>
   <header>
     <div class="logo">GOD-<span>KING</span></div>
+
     <nav>
       <a href="#inicio">Inicio</a>
       <a href="#rangos">Rangos</a>
@@ -189,11 +320,14 @@
   <main>
     <div class="hero" id="inicio">
       <div class="tag">TU AVENTURA COMIENZA AQUÍ</div>
+
       <h1>GOD-<span>KING</span></h1>
+
       <p>
         Forjá tu leyenda. Construí tu imperio.<br>
         Una comunidad, infinitas aventuras.
       </p>
+
       <a class="btn" href="#rangos">VER RANGOS</a>
       <a class="btn secondary" href="#servidor">CÓMO ENTRAR</a>
     </div>
@@ -204,7 +338,6 @@
       <p class="sub">Desbloqueá nuevos beneficios y apoyá al servidor.</p>
 
       <div class="cards">
-
         <div class="card titan">
           <div class="symbol">牙</div>
           <h3>TITAN</h3>
@@ -276,15 +409,6 @@
           <p>El rango supremo</p>
           <a class="btn" href="#servidor">Próximamente</a>
         </div>
-
-        <div class="card legend">
-          <div class="symbol">★</div>
-          <h3>LEGEND</h3>
-          <div class="price">Consultar</div>
-          <p>Beneficios premium</p>
-          <a class="btn" href="#servidor">Próximamente</a>
-        </div>
-
       </div>
 
       <p class="notice">
@@ -296,16 +420,19 @@
     <section id="servidor">
       <div class="tag">JUGÁ CON NOSOTROS</div>
       <h2>Entrá a God-King</h2>
+
       <p class="sub">
         Java Edition · Consultá el estado del servidor en Discord.
       </p>
+
       <p id="ip">god-King.aternos.me</p><br>
+
       <button class="btn" onclick="copiarIP()">COPIAR IP</button>
       <p id="mensaje" class="sub" aria-live="polite"></p>
     </section>
   </main>
 
-  <footer>© 2026 God-King · Comunidad Minecraft</footer>
+  <footer>© 2026 <span>God-King</span> · Comunidad Minecraft</footer>
 
   <script>
     function copiarIP() {
@@ -327,4 +454,3 @@
   </script>
 </body>
 </html>
-```
