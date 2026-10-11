@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#100b1c">
+  <title>God-King | Minecraft</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0c0913;
+      color: #fff;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      background: #130d20;
+      border-bottom: 1px solid #382052;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .logo { font-size: 25px; font-weight: 900; }
+    .logo span { color: #b56aff; }
+    nav a {
+      color: #ddd1ec;
+      text-decoration: none;
+      margin-left: 18px;
+    }
+    nav a:hover { color: #c084fc; }
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background:
+        radial-gradient(ellipse at top, #48206c 0%, #191027 45%, #0c0913 80%);
+    }
+    .tag {
+      color: #d8b4fe;
+      letter-spacing: 3px;
+      font-size: 12px;
+    }
+    h1 { font-size: clamp(45px, 8vw, 85px); margin: 20px 0; }
+    h1 span { color: #bd82ff; }
+    .hero p { color: #d0c5dd; line-height: 1.8; }
+    .btn {
+      display: inline-block;
+      margin: 12px 5px;
+      padding: 14px 24px;
+      border-radius: 8px;
+      background: #a855f7;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border: 1px solid #c084fc;
+      cursor: pointer;
+    }
+    .btn.secondary { background: transparent; }
+    section { padding: 60px 8%; text-align: center; }
+    h2 { font-size: 32px; }
+    .sub { color: #b9abc9; line-height: 1.7; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 20px;
+      margin-top: 35px;
+    }
+    .card {
+      background: #171120;
+      border: 1px solid #38234c;
+      border-radius: 14px;
+      padding: 28px 20px;
+    }
+    .card h3 { font-size: 24px; color: #d8b4fe; }
+    .price { font-size: 34px; font-weight: bold; }
+    .card p { color: #c7bad5; line-height: 1.8; }
+    .card .btn { width: 100%; margin: 15px 0 0; }
+    .notice {
+      max-width: 650px;
+      margin: 25px auto 0;
+      color: #b9abc9;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid #382052;
+      color: #a99bb8;
+      font-size: 13px;
+    }
+    @media (max-width: 600px) {
+      header { justify-content: center; }
+      nav a { margin: 0 7px; font-size: 14px; }
+      .hero { padding: 70px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">GOD-<span>KING</span></div>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#rangos">Rangos</a>
+      <a href="#servidor">Servidor</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero" id="inicio">
+      <div class="tag">TU AVENTURA COMIENZA AQUÍ</div>
+      <h1>GOD-<span>KING</span></h1>
+      <p>Forjá tu leyenda. Construí tu imperio.<br>
+      Una comunidad, infinitas aventuras.</p>
+      <a class="btn" href="#rangos">VER RANGOS</a>
+      <a class="btn secondary" href="#servidor">CÓMO ENTRAR</a>
+    </div>
+
+    <section id="rangos">
+      <div class="tag">TIENDA OFICIAL</div>
+      <h2>Elegí tu rango</h2>
+      <p class="sub">Desbloqueá nuevos beneficios y apoyá al servidor.</p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>VIP</h3>
+          <div class="price">Consultar</div>
+          <p>Beneficios exclusivos<br>Un lugar especial en la comunidad</p>
+          <a class="btn" href="#servidor">Próximamente</a>
+        </div>
+        <div class="card">
+          <h3>MVP</h3>
+          <div class="price">Consultar</div>
+          <p>Ventajas adicionales<br>Más opciones para tu aventura</p>
+          <a class="btn" href="#servidor">Próximamente</a>
+        </div>
+        <div class="card">
+          <h3>LEGEND</h3>
+          <div class="price">Consultar</div>
+          <p>Beneficios premium<br>Destacate en God-King</p>
+          <a class="btn" href="#servidor">Próximamente</a>
+        </div>
+      </div>
+      <p class="notice">
+        La tienda todavía no procesa pagos. Los rangos, precios y beneficios
+        se confirmarán antes de habilitar las compras.
+      </p>
+    </section>
+
+    <section id="servidor">
+      <div class="tag">JUGÁ CON NOSOTROS</div>
+      <h2>Entrá a God-King</h2>
+      <p class="sub">Java Edition · Consultá el estado del servidor en Discord.</p>
+      <p id="ip">god-King.aternos.me</p>
+      <button class="btn" onclick="copiarIP()">COPIAR IP</button>
+      <p id="mensaje" class="sub"></p>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 God-King · Comunidad Minecraft
+  </footer>
+
+  <script>
+    function copiarIP() {
+      const ip = "god-King.aternos.me";
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(ip).then(() => {
+          document.getElementById("mensaje").textContent = "¡IP copiada!";
+        }).catch(() => mostrarIP(ip));
+      } else {
+        mostrarIP(ip);
+      }
+    }
+    function mostrarIP(ip) {
+      document.getElementById("mensaje").textContent =
+        "Copiá esta dirección: " + ip;
+    }
+  </script>
+</body>
+</html>
