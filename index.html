@@ -483,6 +483,118 @@
         min-height: 265px;
       }
     }
+
+    /* SECCIONES NUEVAS DE LA TIENDA */
+    .extra-shop-section {
+      max-width: 1500px;
+      margin: auto;
+      background: #0e0b16;
+      border-bottom: 1px solid #302344;
+    }
+
+    .product-card {
+      --color: #c084fc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 0;
+      min-height: 285px;
+      padding: 28px 20px 22px;
+      background: linear-gradient(145deg, #191423, #12111c);
+      border: 1px solid #382b4c;
+      border-radius: 14px;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--color);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+    }
+
+    .product-card h3 {
+      color: var(--color);
+      font-size: 19px;
+      overflow-wrap: anywhere;
+      margin: 12px 0;
+    }
+
+    .product-card p {
+      color: #c7bad5;
+      line-height: 1.6;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .product-symbol {
+      font-size: 36px;
+      margin: 5px 0;
+      color: var(--color);
+      text-shadow: 0 0 14px rgba(168, 85, 247, 0.25);
+    }
+
+    .product-card .btn {
+      width: 100%;
+      margin: auto 0 0;
+      padding: 12px 5px;
+      font-size: 13px;
+      background: rgba(124, 58, 237, 0.13);
+      border-color: var(--color);
+    }
+
+    .product-card .btn:hover {
+      background: rgba(124, 58, 237, 0.3);
+    }
+
+    .product-note {
+      max-width: 720px;
+      margin: 30px auto 0;
+      padding: 16px;
+      color: #b9abc9;
+      font-size: 13px;
+      line-height: 1.7;
+      background: #15101f;
+      border: 1px solid #302344;
+      border-radius: 10px;
+    }
+
+    .product-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 110;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(7px);
+    }
+
+    .product-modal.active {
+      display: flex;
+    }
+
+    .product-modal-box {
+      width: 100%;
+      max-width: 410px;
+      padding: 30px 24px;
+      text-align: center;
+      background: linear-gradient(145deg, #20132e, #111323);
+      border: 1px solid #67e8f9;
+      border-radius: 18px;
+      box-shadow: 0 0 35px rgba(34, 211, 238, 0.15);
+      animation: aparecer 0.2s ease-out;
+    }
+
+    .product-modal-box h2 {
+      color: #67e8f9;
+      font-size: 25px;
+    }
+
+    .product-modal-box p {
+      color: #d1c5df;
+      line-height: 1.7;
+    }
   </style>
 </head>
 
@@ -495,6 +607,10 @@
       <a href="#rangos">Tienda</a>
       <a href="#discord">Discord</a>
       <a href="#servidor">Servidor</a>
+      <a href="#kits">Kits</a>
+      <a href="#monedas">Monedas</a>
+      <a href="#objetos">Objetos</a>
+      <a href="#mejoras">Mejoras</a>
     </nav>
   </header>
 
@@ -654,6 +770,152 @@
       </p>
     </section>
 
+    <!-- NUEVA SECCIÓN: KITS -->
+    <section id="kits" class="extra-shop-section">
+      <div class="section-head">
+        <div class="tag">EQUIPATE PARA LA AVENTURA</div>
+        <h2>Kits especiales</h2>
+        <p class="sub">Paquetes pensados para ayudarte a progresar en God-King.</p>
+      </div>
+
+      <div class="cards">
+        <div class="product-card" style="--color:#fb7185">
+          <div class="product-symbol">⚔</div>
+          <h3>Kit Guerrero</h3>
+          <div class="price">Próximamente</div>
+          <p>Equipo y recursos para aventurarte en combate.</p>
+          <button class="btn" onclick="abrirProducto('Kit Guerrero','El equipo y los recursos exactos se anunciarán próximamente.')">VER DETALLES</button>
+        </div>
+
+        <div class="product-card" style="--color:#fbbf24">
+          <div class="product-symbol">⛏</div>
+          <h3>Kit Minero</h3>
+          <div class="price">Próximamente</div>
+          <p>Herramientas y recursos para facilitar la minería.</p>
+          <button class="btn" onclick="abrirProducto('Kit Minero','Las herramientas y cantidades se anunciarán próximamente.')">VER DETALLES</button>
+        </div>
+
+        <div class="product-card" style="--color:#a3e635">
+          <div class="product-symbol">🌿</div>
+          <h3>Kit Superviviente</h3>
+          <div class="price">Próximamente</div>
+          <p>Recursos útiles para empezar tu aventura.</p>
+          <button class="btn" onclick="abrirProducto('Kit Superviviente','El contenido se confirmará antes del lanzamiento.')">VER DETALLES</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: MONEDAS -->
+    <section id="monedas" class="extra-shop-section">
+      <div class="section-head">
+        <div class="tag">ECONOMÍA DEL SERVIDOR</div>
+        <h2>Paquetes de monedas</h2>
+        <p class="sub">Paquetes para tu progreso económico dentro del servidor.</p>
+      </div>
+
+      <div class="cards">
+        <div class="product-card" style="--color:#67e8f9">
+          <div class="product-symbol">◈</div>
+          <h3>Bolsa de monedas</h3>
+          <div class="price">Próximamente</div>
+          <p>Un paquete pequeño para tus primeras compras.</p>
+          <button class="btn" onclick="abrirProducto('Bolsa de monedas','La cantidad y el precio todavía no están definidos.')">VER DETALLES</button>
+        </div>
+
+        <div class="product-card" style="--color:#c084fc">
+          <div class="product-symbol">✦</div>
+          <h3>Montón de monedas</h3>
+          <div class="price">Próximamente</div>
+          <p>Más monedas para seguir avanzando.</p>
+          <button class="btn" onclick="abrirProducto('Montón de monedas','La cantidad y el precio se anunciarán próximamente.')">VER DETALLES</button>
+        </div>
+
+        <div class="product-card" style="--color:#fbbf24">
+          <div class="product-symbol">♛</div>
+          <h3>Tesoro de monedas</h3>
+          <div class="price">Próximamente</div>
+          <p>Un paquete grande para la economía del servidor.</p>
+          <button class="btn" onclick="abrirProducto('Tesoro de monedas','La cantidad y el precio se confirmarán más adelante.')">VER DETALLES</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: OBJETOS -->
+    <section id="objetos" class="extra-shop-section">
+      <div class="section-head">
+        <div class="tag">OBJETOS ESPECIALES</div>
+        <h2>Objetos y recursos</h2>
+        <p class="sub">Artículos especiales para tu experiencia en el servidor.</p>
+      </div>
+
+      <div class="cards">
+        <div class="product-card" style="--color:#e879f9">
+          <div class="product-symbol">✧</div>
+          <h3>Objeto encantado</h3>
+          <div class="price">Próximamente</div>
+          <p>Un artículo con encantamientos especiales.</p>
+          <button class="btn" onclick="abrirProducto('Objeto encantado','El objeto y sus encantamientos se anunciarán próximamente.')">VER DETALLES</button>
+        </div>
+
+        <div class="product-card" style="--color:#a3e635">
+          <div class="product-symbol">▣</div>
+          <h3>Caja de recursos</h3>
+          <div class="price">Próximamente</div>
+          <p>Una selección de recursos útiles para tus aventuras.</p>
+          <button class="btn" onclick="abrirProducto('Caja de recursos','El contenido de la caja se confirmará antes de su lanzamiento.')">VER DETALLES</button>
+        </div>
+
+        <div class="product-card" style="--color:#f59e0b">
+          <div class="product-symbol">◆</div>
+          <h3>Artículo raro</h3>
+          <div class="price">Próximamente</div>
+          <p>Un objeto especial para coleccionar o utilizar.</p>
+          <button class="btn" onclick="abrirProducto('Artículo raro','El artículo y sus características se anunciarán próximamente.')">VER DETALLES</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: MEJORAS -->
+    <section id="mejoras" class="extra-shop-section">
+      <div class="section-head">
+        <div class="tag">PERSONALIZÁ TU EXPERIENCIA</div>
+        <h2>Mejoras especiales</h2>
+        <p class="sub">Opciones adicionales que podrían estar disponibles en la tienda.</p>
+      </div>
+
+      <div class="cards">
+        <div class="product-card" style="--color:#67e8f9">
+          <div class="product-symbol">✦</div>
+          <h3>Impulso de experiencia</h3>
+          <div class="price">Próximamente</div>
+          <p>Una mejora relacionada con la experiencia.</p>
+          <button class="btn" onclick="abrirProducto('Impulso de experiencia','La duración y el efecto se definirán antes del lanzamiento.')">VER DETALLES</button>
+        </div>
+
+        <div class="product-card" style="--color:#c084fc">
+          <div class="product-symbol">✺</div>
+          <h3>Partículas especiales</h3>
+          <div class="price">Próximamente</div>
+          <p>Personalizá tu estilo con efectos visuales.</p>
+          <button class="btn" onclick="abrirProducto('Partículas especiales','Los efectos disponibles se anunciarán próximamente.')">VER DETALLES</button>
+        </div>
+
+        <div class="product-card" style="--color:#fbbf24">
+          <div class="product-symbol">⬆</div>
+          <h3>Ventaja adicional</h3>
+          <div class="price">Próximamente</div>
+          <p>Una mejora extra con beneficios por anunciar.</p>
+          <button class="btn" onclick="abrirProducto('Ventaja adicional','Los beneficios se confirmarán antes del lanzamiento.')">VER DETALLES</button>
+        </div>
+      </div>
+
+      <p class="product-note">
+        La tienda es informativa por ahora. No procesa pagos ni entrega productos
+        automáticamente. Los precios y beneficios se publicarán cuando estén confirmados.
+      </p>
+    </section>
+
+    <!-- DISCORD ORIGINAL -->
     <section id="discord">
       <div class="tag">NUESTRA COMUNIDAD</div>
       <h2>Unite a God-King</h2>
@@ -675,6 +937,7 @@
       </div>
     </section>
 
+    <!-- SERVIDOR ORIGINAL -->
     <section id="servidor">
       <div class="tag">JUGÁ CON NOSOTROS</div>
       <h2>Entrá a God-King</h2>
@@ -690,7 +953,7 @@
     </section>
   </main>
 
-  <!-- CARTEL DE RANGO -->
+  <!-- CARTEL ORIGINAL DE RANGO -->
   <div class="modal" id="modalRango"
        role="dialog" aria-modal="true"
        aria-labelledby="tituloModal"
@@ -704,6 +967,19 @@
       <button class="btn close-btn" onclick="cerrarRango()">
         CERRAR
       </button>
+    </div>
+  </div>
+
+  <!-- VENTANA NUEVA DE DETALLES DE PRODUCTOS -->
+  <div class="product-modal" id="modalProducto"
+       role="dialog" aria-modal="true"
+       aria-labelledby="tituloProducto"
+       onclick="cerrarProductoSiFondo(event)">
+    <div class="product-modal-box">
+      <div class="product-symbol">✦</div>
+      <h2 id="tituloProducto">Detalles del producto</h2>
+      <p id="textoProducto">Este producto estará disponible próximamente.</p>
+      <button class="btn close-btn" onclick="cerrarProducto()">CERRAR</button>
     </div>
   </div>
 
@@ -758,9 +1034,27 @@
       }
     }
 
+    /* FUNCIONES NUEVAS PARA LOS PRODUCTOS */
+    function abrirProducto(nombre, descripcion) {
+      document.getElementById("tituloProducto").textContent = nombre;
+      document.getElementById("textoProducto").textContent = descripcion;
+      document.getElementById("modalProducto").classList.add("active");
+    }
+
+    function cerrarProducto() {
+      document.getElementById("modalProducto").classList.remove("active");
+    }
+
+    function cerrarProductoSiFondo(event) {
+      if (event.target.id === "modalProducto") {
+        cerrarProducto();
+      }
+    }
+
     document.addEventListener("keydown", function(event) {
       if (event.key === "Escape") {
         cerrarRango();
+        cerrarProducto();
       }
     });
   </script>
