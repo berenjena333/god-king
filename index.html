@@ -7,7 +7,10 @@
   <title>God-King | Tienda oficial</title>
 
   <style>
-    * { box-sizing: border-box; scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -16,6 +19,7 @@
       color: white;
     }
 
+    /* ENCABEZADO */
     header {
       position: sticky;
       top: 0;
@@ -23,25 +27,31 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
       padding: 18px 8%;
-      background: rgba(19, 13, 32, .97);
+      background: rgba(19, 13, 32, 0.96);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid #493263;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
     .logo {
       font-size: 27px;
       font-weight: 900;
       letter-spacing: 3px;
+      color: white;
+      text-shadow: 0 0 14px rgba(168, 85, 247, 0.35);
     }
 
-    .logo span, footer span { color: #c084fc; }
+    .logo span {
+      color: #c084fc;
+      text-shadow: 0 0 12px rgba(192, 132, 252, 0.5);
+    }
 
     nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 18px;
+      gap: 22px;
     }
 
     nav a {
@@ -49,18 +59,38 @@
       text-decoration: none;
       font-size: 14px;
       font-weight: bold;
+      transition: color 0.2s;
     }
 
-    nav a:hover { color: #67e8f9; }
+    nav a:hover {
+      color: #67e8f9;
+    }
 
+    /* PORTADA */
     .hero {
+      position: relative;
+      overflow: hidden;
       text-align: center;
-      padding: 100px 20px;
+      padding: 110px 20px 100px;
       background:
-        radial-gradient(ellipse at 20% 20%, rgba(0,183,255,.16), transparent 40%),
-        radial-gradient(ellipse at 80% 15%, rgba(168,85,247,.25), transparent 45%),
+        radial-gradient(ellipse at 20% 20%, rgba(0, 183, 255, 0.16), transparent 40%),
+        radial-gradient(ellipse at 80% 15%, rgba(168, 85, 247, 0.25), transparent 45%),
         linear-gradient(145deg, #191027, #111323 65%, #0c0913);
       border-bottom: 1px solid #302344;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border: 1px solid rgba(192, 132, 252, 0.08);
+      border-radius: 50%;
+      top: -150px;
+      left: calc(50% - 125px);
+      box-shadow: 0 0 0 35px rgba(192, 132, 252, 0.025),
+                  0 0 0 70px rgba(192, 132, 252, 0.02);
+      pointer-events: none;
     }
 
     .tag {
@@ -71,21 +101,32 @@
     }
 
     h1 {
-      font-size: clamp(42px, 8vw, 82px);
+      position: relative;
+      font-size: clamp(45px, 8vw, 85px);
       margin: 22px 0;
+      letter-spacing: 2px;
+      text-shadow: 0 0 25px rgba(168, 85, 247, 0.18);
     }
 
-    h1 span { color: #b56aff; }
+    h1 span {
+      color: #b56aff;
+    }
 
-    .hero p, .sub {
+    .hero p,
+    .sub {
       color: #c7bad5;
       line-height: 1.8;
     }
 
+    .hero p {
+      margin-bottom: 25px;
+    }
+
+    /* BOTONES */
     .btn {
       display: inline-block;
-      margin: 8px 4px;
-      padding: 13px 20px;
+      margin: 10px 5px;
+      padding: 14px 24px;
       border-radius: 8px;
       background: linear-gradient(110deg, #9333ea, #7c3aed);
       color: white;
@@ -93,149 +134,164 @@
       font-weight: bold;
       border: 1px solid #c084fc;
       cursor: pointer;
+      transition: transform 0.2s, filter 0.2s;
       font-family: inherit;
-      font-size: 13px;
+      font-size: 14px;
     }
 
-    .btn:hover { filter: brightness(1.2); }
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.15);
+    }
 
-    .secondary {
-      background: #171120;
+    .btn.secondary {
+      background: rgba(20, 25, 45, 0.7);
       border-color: #67e8f9;
     }
 
+    /* BARRA INFORMATIVA */
     .info-bar {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 25px;
-      padding: 17px;
+      gap: 35px;
+      padding: 17px 20px;
       background: #110d1b;
       border-bottom: 1px solid #302344;
       color: #c7bad5;
       font-size: 13px;
     }
 
-    .info-bar span { color: #67e8f9; font-weight: bold; }
-
-    section {
-      padding: 65px 8%;
-      text-align: center;
-      scroll-margin-top: 80px;
+    .info-bar span {
+      color: #67e8f9;
+      font-weight: bold;
     }
 
-    h2 { font-size: 30px; margin: 12px 0; }
+    /* SECCIONES */
+    section {
+      padding: 70px 8%;
+      text-align: center;
+      scroll-margin-top: 85px;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin: 12px 0;
+    }
+
+    #rangos {
+      max-width: 1500px;
+      margin: auto;
+      background:
+        radial-gradient(ellipse at top left, rgba(168, 85, 247, 0.08), transparent 45%),
+        #0e0b16;
+    }
 
     .section-head {
-      max-width: 680px;
-      margin: 0 auto 30px;
+      max-width: 650px;
+      margin: 0 auto 35px;
     }
 
+    /* TARJETAS DE RANGOS */
     .cards {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
-      margin-top: 30px;
+      margin-top: 35px;
+      text-align: center;
     }
 
-    .card, .product-card {
+    .card {
       --color: #c084fc;
+      position: relative;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-width: 0;
-      padding: 25px 20px;
+      min-height: 285px;
+      padding: 28px 20px 22px;
       background: linear-gradient(145deg, #191423, #12111c);
       border: 1px solid #382b4c;
       border-radius: 14px;
-      transition: transform .2s, border-color .2s;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s,
+                  box-shadow 0.2s;
     }
 
-    .card:hover, .product-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--color, #a855f7);
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 12%;
+      width: 76%;
+      height: 3px;
+      background: var(--color);
+      opacity: 0.9;
     }
 
-    .symbol { font-size: 36px; color: var(--color); margin: 8px; }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--color);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+    }
 
-    .card h3 { color: var(--color); margin: 10px 0; }
+    .symbol {
+      font-size: 36px;
+      margin: 5px 0;
+      color: var(--color);
+      text-shadow: 0 0 14px rgba(168, 85, 247, 0.25);
+    }
 
-    .card p, .product-card p {
+    .card h3 {
+      font-size: 19px;
+      color: var(--color);
+      overflow-wrap: anywhere;
+      margin: 12px 0;
+    }
+
+    .price {
+      font-size: 23px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .card p {
       color: #c7bad5;
+      line-height: 1.6;
       font-size: 14px;
-      line-height: 1.65;
+      margin-bottom: 22px;
     }
 
-    .price { font-size: 22px; font-weight: bold; }
-
-    .card .btn, .product-card .btn {
+    .card .btn {
       width: 100%;
-      margin-top: auto;
-    }
-
-    .titan { --color: #d1d5db; }
-    .alpha { --color: #a3e635; }
-    .kaiju { --color: #fb7185; }
-    .falseking { --color: #fbbf24; }
-    .king { --color: #c084fc; }
-    .space { --color: #67e8f9; }
-    .monsters { --color: #facc15; }
-    .destroyer { --color: #f59e0b; }
-    .god { --color: #e879f9; }
-
-    .catalog-section {
-      background: #0c0913;
-      border-top: 1px solid #241a32;
-    }
-
-    .catalog-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-      text-align: left;
-    }
-
-    .product-card { align-items: flex-start; }
-
-    .product-icon {
-      display: grid;
-      place-items: center;
-      width: 52px;
-      height: 52px;
-      margin-bottom: 10px;
-      border: 1px solid #67408a;
-      border-radius: 12px;
-      background: rgba(168,85,247,.12);
-      font-size: 27px;
-    }
-
-    .product-card h3 { color: #f3e8ff; margin: 8px 0; }
-    .product-note { color: #67e8f9 !important; font-size: 12px !important; }
-
-    .category-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 25px;
-    }
-
-    .category-links a {
-      color: #e9d5ff;
-      text-decoration: none;
-      border: 1px solid #493263;
-      background: #171120;
-      border-radius: 999px;
-      padding: 9px 14px;
+      margin: auto 0 0;
+      padding: 12px 5px;
       font-size: 13px;
+      background: rgba(124, 58, 237, 0.13);
+      border-color: var(--color);
     }
+
+    .card .btn:hover {
+      background: rgba(124, 58, 237, 0.3);
+    }
+
+    /* COLORES ORIGINALES DE LOS RANGOS */
+    .titan     { --color: #d1d5db; }
+    .alpha     { --color: #a3e635; }
+    .kaiju     { --color: #fb7185; }
+    .falseking { --color: #fbbf24; }
+    .king      { --color: #c084fc; }
+    .space     { --color: #67e8f9; }
+    .monsters  { --color: #facc15; }
+    .destroyer { --color: #f59e0b; }
+    .god       { --color: #e879f9; }
 
     .notice {
-      max-width: 700px;
-      margin: 28px auto 0;
+      max-width: 650px;
+      margin: 30px auto 0;
       padding: 16px;
-      color: #c7bad5;
+      color: #b9abc9;
       font-size: 13px;
       line-height: 1.7;
       background: #15101f;
@@ -243,42 +299,66 @@
       border-radius: 10px;
     }
 
+    /* DISCORD */
     #discord {
-      background: #11101b;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(88, 101, 242, 0.15), transparent 65%),
+        #11101b;
       border-top: 1px solid #302344;
       border-bottom: 1px solid #302344;
     }
 
     .discord-box {
       max-width: 760px;
-      margin: 25px auto 0;
-      padding: 30px 20px;
-      background: rgba(88,101,242,.07);
+      margin: 28px auto 0;
+      padding: 32px 22px;
+      background: rgba(88, 101, 242, 0.07);
       border: 1px solid #5865f2;
       border-radius: 16px;
     }
 
-    .discord-box h3 { color: #a5b4fc; font-size: 23px; }
-    .discord-btn { background: #5865f2; border-color: #818cf8; }
+    .discord-icon {
+      font-size: 42px;
+      color: #a5b4fc;
+      margin-bottom: 10px;
+    }
 
+    .discord-box h3 {
+      font-size: 24px;
+      margin: 10px 0;
+      color: #a5b4fc;
+    }
+
+    .discord-btn {
+      background: #5865f2;
+      border-color: #818cf8;
+    }
+
+    /* SERVIDOR */
     #servidor {
-      background: linear-gradient(180deg, #111323, #100b18);
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(34, 211, 238, 0.10), transparent 60%),
+        linear-gradient(180deg, #111323, #100b18);
       border-top: 1px solid #263449;
     }
 
     #ip {
       display: inline-block;
-      padding: 14px 20px;
-      color: #a5f3fc;
       background: #171120;
       border: 1px solid #67e8f9;
       border-radius: 8px;
-      font-weight: bold;
+      padding: 14px 20px;
+      color: #a5f3fc;
       overflow-wrap: anywhere;
+      font-weight: bold;
     }
 
-    #mensaje { color: #86efac; min-height: 24px; }
+    #mensaje {
+      color: #86efac;
+      min-height: 24px;
+    }
 
+    /* VENTANA PRÓXIMAMENTE */
     .modal {
       display: none;
       position: fixed;
@@ -287,49 +367,121 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
-      background: rgba(0,0,0,.8);
+      background: rgba(0, 0, 0, 0.78);
       backdrop-filter: blur(7px);
     }
 
-    .modal.active { display: flex; }
+    .modal.active {
+      display: flex;
+    }
 
     .modal-box {
       width: 100%;
-      max-width: 440px;
-      padding: 28px 22px;
+      max-width: 410px;
+      padding: 30px 24px;
       text-align: center;
-      background: #171120;
-      border: 1px solid #a855f7;
-      border-radius: 16px;
-      box-shadow: 0 0 35px rgba(168,85,247,.18);
+      background: linear-gradient(145deg, #20132e, #111323);
+      border: 1px solid #b56aff;
+      border-radius: 18px;
+      box-shadow: 0 0 35px rgba(168, 85, 247, 0.25);
+      animation: aparecer 0.2s ease-out;
     }
 
-    .modal-box p { color: #c7bad5; line-height: 1.7; }
-    .modal-box .product-modal-note { color: #67e8f9; font-size: 13px; }
+    .modal-box .symbol {
+      font-size: 43px;
+    }
 
+    .modal-box h2 {
+      color: #c084fc;
+      font-size: 25px;
+    }
+
+    .modal-box p {
+      color: #d1c5df;
+      line-height: 1.7;
+    }
+
+    .close-btn {
+      background: transparent;
+      border-color: #67e8f9;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: scale(0.92);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* PIE DE PÁGINA */
     footer {
-      padding: 25px;
       text-align: center;
-      color: #9f91ae;
-      background: #09070e;
-      border-top: 1px solid #302344;
+      padding: 30px;
+      background: #0a0810;
+      border-top: 1px solid #382052;
+      color: #a99bb8;
       font-size: 13px;
     }
 
-    @media (max-width: 850px) {
-      header { justify-content: center; text-align: center; }
-      nav { justify-content: center; }
-      .cards, .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    footer span {
+      color: #c084fc;
     }
 
-    @media (max-width: 520px) {
-      header { padding: 16px 5%; }
-      nav { gap: 12px; }
-      nav a { font-size: 12px; }
-      section { padding: 48px 5%; }
-      .hero { padding: 75px 16px; }
-      .cards, .catalog-grid { grid-template-columns: 1fr; }
-      h2 { font-size: 26px; }
+    /* ADAPTACIÓN A PANTALLAS */
+    @media (max-width: 800px) {
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      header {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      section {
+        padding: 55px 5%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 70px 18px;
+      }
+
+      nav {
+        gap: 14px;
+      }
+
+      nav a {
+        font-size: 13px;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .info-bar {
+        gap: 12px 22px;
+      }
+
+      .card {
+        min-height: 265px;
+      }
     }
   </style>
 </head>
@@ -337,147 +489,221 @@
 <body>
   <header>
     <div class="logo">GOD-<span>KING</span></div>
+
     <nav>
       <a href="#inicio">Inicio</a>
-      <a href="#rangos">Rangos</a>
-      <a href="#kits">Kits</a>
-      <a href="#monedas">Monedas</a>
-      <a href="#objetos">Objetos</a>
-      <a href="#mejoras">Mejoras</a>
+      <a href="#rangos">Tienda</a>
       <a href="#discord">Discord</a>
       <a href="#servidor">Servidor</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero" id="inicio">
-      <div class="tag">TIENDA OFICIAL</div>
+    <div class="hero" id="inicio">
+      <div class="tag">TU AVENTURA COMIENZA AQUÍ</div>
+
       <h1>GOD-<span>KING</span></h1>
-      <p>Forjá tu leyenda. Construí tu imperio.<br>Una comunidad, infinitas aventuras.</p>
-      <a class="btn" href="#rangos">EXPLORAR TIENDA</a>
-      <a class="btn secondary" href="https://discord.gg/7k82QR8vUB" target="_blank" rel="noopener noreferrer">UNIRME AL DISCORD</a>
-    </section>
+
+      <p>
+        Forjá tu leyenda. Construí tu imperio.<br>
+        Una comunidad, infinitas aventuras.
+      </p>
+
+      <a class="btn" href="#rangos">EXPLORAR RANGOS</a>
+      <a class="btn secondary" href="#discord">UNIRME AL DISCORD</a>
+    </div>
 
     <div class="info-bar">
-      <div><span>9</span> rangos disponibles próximamente</div>
-      <div><span>JAVA</span> Edition</div>
-      <div><span>GOD-KING</span> Comunidad</div>
+      <div>⚔️ <span>9 rangos</span> disponibles próximamente</div>
+      <div>🌐 Minecraft <span>Java Edition</span></div>
+      <div>💬 Comunidad <span>God-King</span></div>
     </div>
 
     <section id="rangos">
       <div class="section-head">
-        <div class="tag">SUBÍ DE NIVEL</div>
-        <h2>Rangos exclusivos</h2>
-        <p class="sub">Elegí el rango que más te guste y descubrí sus detalles.</p>
+        <div class="tag">TIENDA OFICIAL</div>
+        <h2>Elegí tu rango</h2>
+        <p class="sub">
+          Descubrí los rangos de God-King. Tocá una tarjeta para conocer
+          cuándo estará disponible.
+        </p>
       </div>
 
       <div class="cards">
-        <article class="card titan"><div class="symbol">牙</div><h3>Titan</h3><p>Un rango para quienes buscan dejar su marca.</p><div class="price">Próximamente</div><button class="btn" onclick="abrirRango('Titan','牙')">VER DETALLES</button></article>
-        <article class="card alpha"><div class="symbol">牙</div><h3>Alpha</h3><p>Destacate entre los jugadores de God-King.</p><div class="price">Próximamente</div><button class="btn" onclick="abrirRango('Alpha','牙')">VER DETALLES</button></article>
-        <article class="card kaiju"><div class="symbol">☣</div><h3>Kaiju</h3><p>Un rango con una identidad única.</p><div class="price">Próximamente</div><button class="btn" onclick="abrirRango('Kaiju','☣')">VER DETALLES</button></article>
-        <article class="card falseking"><div class="symbol">♛</div><h3>False King</h3><p>Una opción para quienes quieren sobresalir.</p><div class="price">Próximamente</div><button class="btn" onclick="abrirRango('False King','♛')">VER DETALLES</button></article>
-        <article class="card king"><div class="symbol">♛</div><h3>King</h3><p>Mostrá tu presencia en el servidor.</p><div class="price">Próximamente</div><button class="btn" onclick="abrirRango('King','♛')">VER DETALLES</button></article>
-        <article class="card space"><div class="symbol">✦</div><h3>Space</h3><p>Un estilo inspirado en el universo.</p><div class="price">Próximamente</div><button class="btn" onclick="abrirRango('Space','✦')">VER DETALLES</button></article>
-        <article class="card monsters"><div class="symbol">♛</div><h3>King of Monsters</h3><p>Un nombre digno de una leyenda.</p><div class="price">Próximamente</div><button class="btn" onclick="abrirRango('King of Monsters','♛')">VER DETALLES</button></article>
-        <article class="card destroyer"><div class="symbol">ϟ</div><h3>Destroyer</h3><p>Un rango con una presencia poderosa.</p><div class="price">Próximamente</div><button class="btn" onclick="abrirRango('Destroyer','ϟ')">VER DETALLES</button></article>
-        <article class="card god"><div class="symbol">✧</div><h3>God</h3><p>El rango más emblemático de God-King.</p><div class="price">Próximamente</div><button class="btn" onclick="abrirRango('God','✧')">VER DETALLES</button></article>
-      </div>
-    </section>
+        <div class="card titan" role="button" tabindex="0"
+             onclick="abrirRango('TITAN', '牙')"
+             onkeydown="activarRango(event, 'TITAN', '牙')">
+          <div class="symbol">牙</div>
+          <h3>TITAN</h3>
+          <div class="price">Consultar</div>
+          <p>Beneficios exclusivos</p>
+          <button class="btn" type="button"
+                  onclick="event.stopPropagation(); abrirRango('TITAN', '牙')">
+            VER RANGO
+          </button>
+        </div>
 
-    <section id="kits" class="catalog-section">
-      <div class="section-head">
-        <div class="tag">PREPARATE PARA LA AVENTURA</div>
-        <h2>Kits exclusivos</h2>
-        <p class="sub">Kits pensados para distintos estilos de juego. Sus contenidos se anunciarán cuando estén definidos.</p>
-        <div class="category-links">
-          <a href="#kits">Kits</a><a href="#monedas">Monedas</a><a href="#objetos">Objetos especiales</a><a href="#mejoras">Mejoras</a>
+        <div class="card alpha" role="button" tabindex="0"
+             onclick="abrirRango('ALPHA', '牙')"
+             onkeydown="activarRango(event, 'ALPHA', '牙')">
+          <div class="symbol">牙</div>
+          <h3>ALPHA</h3>
+          <div class="price">Consultar</div>
+          <p>Ventajas especiales</p>
+          <button class="btn" type="button"
+                  onclick="event.stopPropagation(); abrirRango('ALPHA', '牙')">
+            VER RANGO
+          </button>
+        </div>
+
+        <div class="card kaiju" role="button" tabindex="0"
+             onclick="abrirRango('KAIJU', '⚠')"
+             onkeydown="activarRango(event, 'KAIJU', '⚠')">
+          <div class="symbol">⚠</div>
+          <h3>KAIJU</h3>
+          <div class="price">Consultar</div>
+          <p>Poder y presencia</p>
+          <button class="btn" type="button"
+                  onclick="event.stopPropagation(); abrirRango('KAIJU', '⚠')">
+            VER RANGO
+          </button>
+        </div>
+
+        <div class="card falseking" role="button" tabindex="0"
+             onclick="abrirRango('FALSE KING', '♛')"
+             onkeydown="activarRango(event, 'FALSE KING', '♛')">
+          <div class="symbol">♛</div>
+          <h3>FALSE KING</h3>
+          <div class="price">Consultar</div>
+          <p>Una corona imponente</p>
+          <button class="btn" type="button"
+                  onclick="event.stopPropagation(); abrirRango('FALSE KING', '♛')">
+            VER RANGO
+          </button>
+        </div>
+
+        <div class="card king" role="button" tabindex="0"
+             onclick="abrirRango('KING', '♛')"
+             onkeydown="activarRango(event, 'KING', '♛')">
+          <div class="symbol">♛</div>
+          <h3>KING</h3>
+          <div class="price">Consultar</div>
+          <p>Dominá el reino</p>
+          <button class="btn" type="button"
+                  onclick="event.stopPropagation(); abrirRango('KING', '♛')">
+            VER RANGO
+          </button>
+        </div>
+
+        <div class="card space" role="button" tabindex="0"
+             onclick="abrirRango('SPACE', '✦')"
+             onkeydown="activarRango(event, 'SPACE', '✦')">
+          <div class="symbol">✦</div>
+          <h3>SPACE</h3>
+          <div class="price">Consultar</div>
+          <p>Un estilo galáctico</p>
+          <button class="btn" type="button"
+                  onclick="event.stopPropagation(); abrirRango('SPACE', '✦')">
+            VER RANGO
+          </button>
+        </div>
+
+        <div class="card monsters" role="button" tabindex="0"
+             onclick="abrirRango('KING OF MONSTERS', '♛')"
+             onkeydown="activarRango(event, 'KING OF MONSTERS', '♛')">
+          <div class="symbol">♛</div>
+          <h3>KING OF MONSTERS</h3>
+          <div class="price">Consultar</div>
+          <p>El rey de los monstruos</p>
+          <button class="btn" type="button"
+                  onclick="event.stopPropagation(); abrirRango('KING OF MONSTERS', '♛')">
+            VER RANGO
+          </button>
+        </div>
+
+        <div class="card destroyer" role="button" tabindex="0"
+             onclick="abrirRango('DESTROYER', '角')"
+             onkeydown="activarRango(event, 'DESTROYER', '角')">
+          <div class="symbol">角</div>
+          <h3>DESTROYER</h3>
+          <div class="price">Consultar</div>
+          <p>Un cuerno dorado</p>
+          <button class="btn" type="button"
+                  onclick="event.stopPropagation(); abrirRango('DESTROYER', '角')">
+            VER RANGO
+          </button>
+        </div>
+
+        <div class="card god" role="button" tabindex="0"
+             onclick="abrirRango('GOD', '✧')"
+             onkeydown="activarRango(event, 'GOD', '✧')">
+          <div class="symbol">✧</div>
+          <h3>GOD</h3>
+          <div class="price">Consultar</div>
+          <p>El rango supremo</p>
+          <button class="btn" type="button"
+                  onclick="event.stopPropagation(); abrirRango('GOD', '✧')">
+            VER RANGO
+          </button>
         </div>
       </div>
 
-      <div class="catalog-grid">
-        <article class="product-card"><div class="product-icon">⚔️</div><h3>Kit Guerrero</h3><p>Equipo orientado al combate y la aventura.</p><p class="product-note">Contenido y precio por confirmar</p><button class="btn" onclick="abrirProducto('Kit Guerrero','Equipo orientado al combate y la aventura.','El contenido y el precio se anunciarán próximamente.')">VER DETALLES</button></article>
-        <article class="product-card"><div class="product-icon">⛏️</div><h3>Kit Minero</h3><p>Herramientas y recursos para quienes disfrutan minar.</p><p class="product-note">Contenido y precio por confirmar</p><button class="btn" onclick="abrirProducto('Kit Minero','Herramientas y recursos para quienes disfrutan minar.','El contenido y el precio se anunciarán próximamente.')">VER DETALLES</button></article>
-        <article class="product-card"><div class="product-icon">🧭</div><h3>Kit Superviviente</h3><p>Artículos útiles para comenzar o continuar tu aventura.</p><p class="product-note">Contenido y precio por confirmar</p><button class="btn" onclick="abrirProducto('Kit Superviviente','Artículos útiles para comenzar o continuar tu aventura.','El contenido y el precio se anunciarán próximamente.')">VER DETALLES</button></article>
-      </div>
-    </section>
-
-    <section id="monedas" class="catalog-section">
-      <div class="section-head">
-        <div class="tag">ECONOMÍA DEL SERVIDOR</div>
-        <h2>Paquetes de monedas</h2>
-        <p class="sub">Elegí un paquete para la economía del servidor. Las cantidades y los precios todavía no están definidos.</p>
-      </div>
-      <div class="catalog-grid">
-        <article class="product-card"><div class="product-icon">🪙</div><h3>Bolsa de monedas</h3><p>Un paquete inicial para hacer tus primeras compras.</p><p class="product-note">Cantidad y precio por confirmar</p><button class="btn" onclick="abrirProducto('Bolsa de monedas','Un paquete inicial para hacer tus primeras compras.','La cantidad y el precio se anunciarán próximamente.')">VER DETALLES</button></article>
-        <article class="product-card"><div class="product-icon">💰</div><h3>Montón de monedas</h3><p>Un paquete intermedio para tener más saldo.</p><p class="product-note">Cantidad y precio por confirmar</p><button class="btn" onclick="abrirProducto('Montón de monedas','Un paquete intermedio para tener más saldo.','La cantidad y el precio se anunciarán próximamente.')">VER DETALLES</button></article>
-        <article class="product-card"><div class="product-icon">👑</div><h3>Tesoro de monedas</h3><p>Un paquete grande para ampliar tus posibilidades.</p><p class="product-note">Cantidad y precio por confirmar</p><button class="btn" onclick="abrirProducto('Tesoro de monedas','Un paquete grande para ampliar tus posibilidades.','La cantidad y el precio se anunciarán próximamente.')">VER DETALLES</button></article>
-      </div>
-    </section>
-
-    <section id="objetos" class="catalog-section">
-      <div class="section-head">
-        <div class="tag">ARTÍCULOS EXCLUSIVOS</div>
-        <h2>Objetos especiales</h2>
-        <p class="sub">Objetos y recursos especiales que podrían aparecer en la tienda.</p>
-      </div>
-      <div class="catalog-grid">
-        <article class="product-card"><div class="product-icon">✨</div><h3>Objeto encantado</h3><p>Un artículo con encantamientos especiales, respetando el equilibrio del servidor.</p><p class="product-note">Objeto y precio por confirmar</p><button class="btn" onclick="abrirProducto('Objeto encantado','Un artículo con encantamientos especiales, respetando el equilibrio del servidor.','El objeto, los encantamientos y el precio se anunciarán próximamente.')">VER DETALLES</button></article>
-        <article class="product-card"><div class="product-icon">📦</div><h3>Caja de recursos</h3><p>Un paquete de materiales útiles para construir y explorar.</p><p class="product-note">Contenido y precio por confirmar</p><button class="btn" onclick="abrirProducto('Caja de recursos','Un paquete de materiales útiles para construir y explorar.','El contenido y el precio se anunciarán próximamente.')">VER DETALLES</button></article>
-        <article class="product-card"><div class="product-icon">💎</div><h3>Artículo raro</h3><p>Un artículo especial para coleccionar o utilizar en el juego.</p><p class="product-note">Artículo y precio por confirmar</p><button class="btn" onclick="abrirProducto('Artículo raro','Un artículo especial para coleccionar o utilizar en el juego.','La disponibilidad y el precio se anunciarán próximamente.')">VER DETALLES</button></article>
-      </div>
-    </section>
-
-    <section id="mejoras" class="catalog-section">
-      <div class="section-head">
-        <div class="tag">PERSONALIZACIÓN</div>
-        <h2>Mejoras y extras</h2>
-        <p class="sub">Extras opcionales para personalizar tu experiencia, según las funciones disponibles en el servidor.</p>
-      </div>
-      <div class="catalog-grid">
-        <article class="product-card"><div class="product-icon">📈</div><h3>Impulso de experiencia</h3><p>Una posible mejora relacionada con la experiencia dentro del juego.</p><p class="product-note">Función y precio por confirmar</p><button class="btn" onclick="abrirProducto('Impulso de experiencia','Una posible mejora relacionada con la experiencia dentro del juego.','La función exacta y su disponibilidad se confirmarán antes de ofrecerla.')">VER DETALLES</button></article>
-        <article class="product-card"><div class="product-icon">🌌</div><h3>Partículas especiales</h3><p>Un efecto visual para darle un estilo propio a tu personaje.</p><p class="product-note">Efectos y precio por confirmar</p><button class="btn" onclick="abrirProducto('Partículas especiales','Un efecto visual para darle un estilo propio a tu personaje.','Los efectos y el precio se anunciarán próximamente.')">VER DETALLES</button></article>
-        <article class="product-card"><div class="product-icon">➕</div><h3>Ventaja adicional</h3><p>Un extra opcional que se definirá cuidando el equilibrio del servidor.</p><p class="product-note">Beneficio y precio por confirmar</p><button class="btn" onclick="abrirProducto('Ventaja adicional','Un extra opcional que se definirá cuidando el equilibrio del servidor.','El beneficio y su disponibilidad se anunciarán próximamente.')">VER DETALLES</button></article>
-      </div>
-      <p class="notice">Importante: estas tarjetas son informativas. Todavía no hay pagos activos ni entrega automática de productos en esta página.</p>
+      <p class="notice">
+        La tienda todavía no procesa pagos. Los rangos, precios y beneficios
+        se confirmarán antes de habilitar las compras.
+      </p>
     </section>
 
     <section id="discord">
       <div class="tag">NUESTRA COMUNIDAD</div>
       <h2>Unite a God-King</h2>
+
       <div class="discord-box">
-        <div class="symbol">◈</div>
+        <div class="discord-icon">◈</div>
         <h3>Discord oficial</h3>
-        <p class="sub">Enterate de las novedades, hablá con otros jugadores y recibí información del servidor.</p>
-        <a class="btn discord-btn" href="https://discord.gg/7k82QR8vUB" target="_blank" rel="noopener noreferrer">UNIRME AL DISCORD</a>
+        <p class="sub">
+          Enterate de las novedades, hablá con otros jugadores
+          y recibí información de nuestro servidor.
+        </p>
+
+        <a class="btn discord-btn"
+           href="https://discord.gg/7k82QR8vUB"
+           target="_blank"
+           rel="noopener noreferrer">
+          UNIRME AL DISCORD
+        </a>
       </div>
     </section>
 
     <section id="servidor">
       <div class="tag">JUGÁ CON NOSOTROS</div>
       <h2>Entrá a God-King</h2>
-      <p class="sub">Java Edition · Consultá las novedades del servidor en Discord.</p>
+
+      <p class="sub">
+        Java Edition · Consultá las novedades del servidor en Discord.
+      </p>
+
       <p id="ip">god-King.aternos.me</p><br>
+
       <button class="btn" onclick="copiarIP()">COPIAR IP</button>
       <p id="mensaje" class="sub" aria-live="polite"></p>
     </section>
   </main>
 
-  <div class="modal" id="modalRango" role="dialog" aria-modal="true" aria-labelledby="tituloModal" onclick="cerrarSiFondo(event)">
+  <!-- CARTEL DE RANGO -->
+  <div class="modal" id="modalRango"
+       role="dialog" aria-modal="true"
+       aria-labelledby="tituloModal"
+       onclick="cerrarSiFondo(event)">
     <div class="modal-box">
       <div class="symbol" id="simboloModal">✧</div>
-      <h2 id="tituloModal">Próximamente</h2>
-      <p id="textoModal">Este rango estará disponible próximamente.</p>
-      <button class="btn" onclick="cerrarRango()">CERRAR</button>
-    </div>
-  </div>
-
-  <div class="modal" id="modalProducto" role="dialog" aria-modal="true" aria-labelledby="tituloProducto" onclick="cerrarProductoFondo(event)">
-    <div class="modal-box">
-      <div class="symbol">✦</div>
-      <h2 id="tituloProducto">Producto</h2>
-      <p id="descripcionProducto"></p>
-      <p class="product-modal-note" id="notaProducto"></p>
-      <button class="btn" onclick="cerrarProducto()">CERRAR</button>
+      <h2 id="tituloModal">¡Próximamente!</h2>
+      <p id="textoModal">
+        Este rango estará disponible próximamente.
+      </p>
+      <button class="btn close-btn" onclick="cerrarRango()">
+        CERRAR
+      </button>
     </div>
   </div>
 
@@ -489,19 +715,29 @@
       const mensaje = document.getElementById("mensaje");
 
       if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(ip)
-          .then(() => mensaje.textContent = "¡IP copiada correctamente!")
-          .catch(() => mensaje.textContent = "Copiá esta dirección: " + ip);
+        navigator.clipboard.writeText(ip).then(() => {
+          mensaje.textContent = "¡IP copiada correctamente!";
+        }).catch(() => mostrarIP(ip));
       } else {
-        mensaje.textContent = "Copiá esta dirección: " + ip;
+        mostrarIP(ip);
       }
     }
 
+    function mostrarIP(ip) {
+      document.getElementById("mensaje").textContent =
+        "Copiá esta dirección: " + ip;
+    }
+
     function abrirRango(nombre, simbolo) {
-      document.getElementById("tituloModal").textContent = nombre + " — Próximamente";
+      document.getElementById("tituloModal").textContent =
+        nombre + " — Próximamente";
+
       document.getElementById("simboloModal").textContent = simbolo;
+
       document.getElementById("textoModal").textContent =
-        "El rango " + nombre + " todavía no está disponible. ¡Muy pronto llegará a God-King!";
+        "El rango " + nombre +
+        " todavía no está disponible. ¡Muy pronto llegará a God-King!";
+
       document.getElementById("modalRango").classList.add("active");
     }
 
@@ -510,28 +746,21 @@
     }
 
     function cerrarSiFondo(event) {
-      if (event.target.id === "modalRango") cerrarRango();
+      if (event.target.id === "modalRango") {
+        cerrarRango();
+      }
     }
 
-    function abrirProducto(nombre, descripcion, nota) {
-      document.getElementById("tituloProducto").textContent = nombre;
-      document.getElementById("descripcionProducto").textContent = descripcion;
-      document.getElementById("notaProducto").textContent = nota;
-      document.getElementById("modalProducto").classList.add("active");
-    }
-
-    function cerrarProducto() {
-      document.getElementById("modalProducto").classList.remove("active");
-    }
-
-    function cerrarProductoFondo(event) {
-      if (event.target.id === "modalProducto") cerrarProducto();
+    function activarRango(event, nombre, simbolo) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        abrirRango(nombre, simbolo);
+      }
     }
 
     document.addEventListener("keydown", function(event) {
       if (event.key === "Escape") {
         cerrarRango();
-        cerrarProducto();
       }
     });
   </script>
